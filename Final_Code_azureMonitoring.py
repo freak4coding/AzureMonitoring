@@ -3,16 +3,16 @@
 # from azure.identity import ClientSecretCredential
 from azure.identity import InteractiveBrowserCredential
 # from azure.identity import AzureCliCredential
-from azure.identity import DefaultAzureCredential
+# from azure.identity import DefaultAzureCredential
 from azure.mgmt.resource import ResourceManagementClient
 from azure.mgmt.resource import SubscriptionClient
 from azure.mgmt.datafactory import DataFactoryManagementClient
 from azure.mgmt.datafactory.models import *
 # import server
 # import re
-import sys
-import threading
-import csv
+# import sys
+# import threading
+# import csv
 
 # f = open("FinalOutput.csv","w")
 # sys.stdout = f

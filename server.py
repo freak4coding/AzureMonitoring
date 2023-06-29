@@ -19,10 +19,7 @@ completeDataList["RunId"]=""
 def subscription():
     subscriptionList = azureMonitoring.getListOfSubscription()
     return jsonify(subscriptionList)
-# @app.route('/')
-# def index():
-#    print('Request for index page received')
-#    return render_template('index.html')
+
 
 @app.route('/resourceGroup', methods=['Post','Get'])
 def resourceGroup():
@@ -95,7 +92,8 @@ def process_adf(adf):
     pipeline_list = azureMonitoring.SubscriptionDetail.getListOfPipelines(completeDataList["resourceGroup"],adf,completeDataList["subscriptionID"])
     completeDataList["PipelineList"] = pipeline_list
     complete_data = azureMonitoring.RunHistory.get_master_pipeline_adf(completeDataList["subscriptionID"],completeDataList["resourceGroup"],adf,completeDataList["PipelineList"],completeDataList["lastTimeAfter"],completeDataList["lastTimeBefore"])
-    results.append(complete_data)
+    if(len(complete_data) >0): 
+        results.append(complete_data)
 
 @app.route('/ActivityList', methods=['Post','Get'])
 def ActivityList():
@@ -107,6 +105,6 @@ def ActivityList():
     return jsonify(ActivityList)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # app.run(debug=True)
     # Pipelines()
-    # app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
