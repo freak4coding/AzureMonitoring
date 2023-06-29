@@ -16,13 +16,13 @@ completeDataList["lastTimeBefore"]=""
 completeDataList["RunId"]=""
 
 @app.route('/', methods=['Get'])
-# def subscription():
-#     subscriptionList = azureMonitoring.getListOfSubscription()
-#     return jsonify(subscriptionList)
-@app.route('/')
-def index():
-   print('Request for index page received')
-   return render_template('index.html')
+def subscription():
+    subscriptionList = azureMonitoring.getListOfSubscription()
+    return jsonify(subscriptionList)
+# @app.route('/')
+# def index():
+#    print('Request for index page received')
+#    return render_template('index.html')
 
 @app.route('/resourceGroup', methods=['Post','Get'])
 def resourceGroup():
