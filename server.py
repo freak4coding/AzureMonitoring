@@ -5,7 +5,6 @@ import threading
 
 app = Flask(__name__)
 CORS(app)
-# resources={r"/api/*": {"origins": "http://localhost:3000"}}
 completeDataList = {}
 completeDataList["subscriptionID"]=""
 completeDataList["resourceGroup"]=""
@@ -17,9 +16,10 @@ completeDataList["RunId"]=""
 
 @app.route('/', methods=['Get'])
 def subscription():
-    # subscriptionList = azureMonitoring.getListOfSubscription()
-    # return jsonify(subscriptionList)
-    return "Hello World"
+    credential = InteractiveBrowserCredential()
+    subscriptionList = azureMonitoring.getListOfSubscription(credential)
+    return jsonify(subscriptionList)
+    # return "Hello World"
 
 
 @app.route('/resourceGroup', methods=['Post','Get'])
