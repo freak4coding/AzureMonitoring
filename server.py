@@ -16,7 +16,7 @@ completeDataList["RunId"]=""
 
 @app.route('/', methods=['Get'])
 def subscription():
-    subscriptionList = azureMonitoring.getListOfSubscription(credential)
+    subscriptionList = azureMonitoring.getListOfSubscription()
     return jsonify(subscriptionList)
     # return "Hello World"
 
